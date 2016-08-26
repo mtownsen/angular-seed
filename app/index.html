@@ -31,13 +31,21 @@
   <!-- In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
   -->
+  
+  <!-- bower:js -->
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="bower_components/angular-loader/angular-loader.js"></script>
+  <script src="bower_components/angular-mocks/angular-mocks.js"></script>
+  <!-- endbower -->
+
+  <!-- inject:js -->
   <script src="app.js"></script>
   <script src="view1/view1.js"></script>
   <script src="view2/view2.js"></script>
-  <script src="components/version/version.js"></script>
-  <script src="components/version/version-directive.js"></script>
   <script src="components/version/interpolate-filter.js"></script>
-</body>
+  <script src="components/version/version-directive.js"></script>
+  <script src="components/version/version.js"></script>
+  <!-- endinject -->
+  </body>
 </html>
