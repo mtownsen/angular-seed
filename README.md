@@ -3,13 +3,21 @@ This project is based on the official angular see project configured with gulp f
 
 ## Gulp Tasks
 Gulp is integrated to provide useful commands while developing. 
-*  gulp start
+```
+gulp start
+```
   *  Uses Browsersync to launch a server and load the app in a browser window
-*  gulp styles
+```
+gulp styles
+```
   *  Inject the necessary stylesheets
-*  gulp scripts
+```
+gulp scripts
+```
   *  Inject the necessary scripts
-*  gulp bower
+```
+gulp bower
+```
   *  Inject the necessary bower dependencies
 
 ## Documentation from the original repo untouched
