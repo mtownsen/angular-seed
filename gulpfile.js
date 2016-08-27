@@ -31,6 +31,9 @@ gulp.task('start', function() {
 	    server: config.app,
 	    port: 	config.browserPort
     });
+
+  	gulp.watch(config.jsPaths).on('change', browserSync.reload);
+    gulp.watch(config.cssPaths).on('change', browserSync.reload);
 });
 
 gulp.task('styles', function () {
