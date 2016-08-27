@@ -1,6 +1,8 @@
 var gulp = require('gulp');
 var inject = require('gulp-inject');
 var wiredep = require('wiredep').stream;
+var sass = require('gulp-ruby-sass');
+var connect = require('gulp-connect');
 
 var config = {
 		app: './app/',
@@ -21,7 +23,13 @@ var config = {
 			directory: './app/bower_components'
 		}
 };
- 
+
+gulp.task('connect', function () {
+	connect.server({
+		root: 'app',
+		port: 3000
+	})
+});
 
 gulp.task('styles', function () {
   var target = gulp.src(config.index);
