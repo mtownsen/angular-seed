@@ -2,7 +2,7 @@ var gulp = require('gulp');
 var inject = require('gulp-inject');
 var wiredep = require('wiredep').stream;
 var sass = require('gulp-ruby-sass');
-var connect = require('gulp-connect');
+var browserSync = require('browser-sync').create();
 
 var config = {
 		app: './app/',
@@ -24,11 +24,13 @@ var config = {
 		}
 };
 
-gulp.task('connect', function () {
-	connect.server({
-		root: 'app',
-		port: 3000
-	})
+// Static server
+gulp.task('start', function() {
+    browserSync.init({
+        server: {
+            baseDir: config.app
+        }
+    });
 });
 
 gulp.task('styles', function () {
