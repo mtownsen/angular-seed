@@ -10,15 +10,15 @@ var app = angular.module('myApp', [
   'myApp.dashboard'
 ]);
 
-app.config(['$locationProvider', '$stateProvider', '$urlRouterProvider', function($locationProvider, $stateProvider, $urlRouterProvider) {
+app.config(function($locationProvider, $stateProvider, $urlRouterProvider) {
   $locationProvider.hashPrefix('!');
 
   $urlRouterProvider.otherwise('/dashboard');
-}]);
+});
 
 app.constant('AppSettings', AppSettings);
 
 
-app.run(['$rootScope', 'AppSettings', function($rootScope, AppSettings) {debugger
+app.run(function($rootScope, AppSettings) {debugger
 	$rootScope.pageTitle = AppSettings.appTitle;
-}]);
+});

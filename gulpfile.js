@@ -32,6 +32,7 @@ gulp.task('start', function() {
 	    port: 	config.browserPort
     });
 
+    // Watch for changes to main files and reload browser.
   	gulp.watch(config.jsPaths).on('change', browserSync.reload);
     gulp.watch(config.cssPaths).on('change', browserSync.reload);
 });

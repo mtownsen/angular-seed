@@ -18,7 +18,7 @@ describe('my app', function() {
     });
 
 
-    it('should render view1 when user navigates to /dashboard', function() {
+    it('should render dashboard when user navigates to /dashboard', function() {
       expect(element.all(by.css('[ng-view] p')).first().getText()).
         toMatch(/dashboard/);
     });
