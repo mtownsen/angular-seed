@@ -1,12 +1,14 @@
 'use strict';
 
-angular.module('myApp.dashboard', ['ngRoute'])
+angular.module('myApp.dashboard', [ 'ui.router'])
 
-.config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/dashboard', {
-    templateUrl: '/components/dashboard/dashboard.html',
-    controller: 'DashboardCtrl'
-  });
+.config(['$stateProvider', function($stateProvider) {
+	$stateProvider
+	 .state('dashboard', {
+      url: "/dashboard",
+      templateUrl: "/components/dashboard/dashboard.html",
+      controller: 'DashboardCtrl'
+    })
 }])
 
 .controller('DashboardCtrl', [function() {

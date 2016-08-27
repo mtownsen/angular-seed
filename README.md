@@ -1,5 +1,5 @@
 # AngularJS + Bootstrap + HTMLBoilerplate + Gulp
-This project is based on the official angular see project configured with gulp for dependency injection
+This project is based on the official angular see project configured with gulp for dependency injection with Bootstrap and HTML5Boilerplate for modern styles. 
 
 ## Documentation from the original repo untouched
 
