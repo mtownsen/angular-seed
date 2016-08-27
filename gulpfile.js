@@ -21,15 +21,15 @@ var config = {
 		},
 		bowerDir: {
 			directory: './app/bower_components'
-		}
+		},
+		browserPort: 4000
 };
 
 // Static server
 gulp.task('start', function() {
     browserSync.init({
-        server: {
-            baseDir: config.app
-        }
+	    server: config.app,
+	    port: 	config.browserPort
     });
 });
 
