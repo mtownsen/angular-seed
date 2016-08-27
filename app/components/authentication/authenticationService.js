@@ -114,17 +114,17 @@ authApp.config(function($stateProvider) {
         })
         .state('signup', {
             url: "/sign_up",
-            templateUrl: "/components/authentication/signup.html",
+            templateUrl: "/components/authentication/sign_up.html",
             controller: 'AuthenticationCtrl'
         })
         .state('forgotpassword', {
             url: "/forgot_password",
-            templateUrl: "/components/authentication/forgotpassword.html",
+            templateUrl: "/components/authentication/forgot_password.html",
             controller: 'AuthenticationCtrl'
         })
         .state('resetpassword', {
             url: "/reset_password",
-            templateUrl: "/components/authentication/resetpassword.html",
+            templateUrl: "/components/authentication/reset_password.html",
             controller: 'AuthenticationCtrl'
         });
 });

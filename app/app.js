@@ -11,14 +11,14 @@ var app = angular.module('myApp', [
   'myApp.auth'
 ]);
 
-app.config(function($location, $locationProvider, $stateProvider, $urlRouterProvider) {
+app.config(function($locationProvider, $stateProvider, $urlRouterProvider) {
   $locationProvider.hashPrefix('!');
 
-	if (localStorage.token) {
-	    console.log("The user is logged in.");
-	} else {
-	    $location.path('/login');
-	}
+	// if (localStorage.token) {
+	//     console.log("The user is logged in.");
+	// } else {
+	//     $location.path('/login');
+	// }
 
   $urlRouterProvider.otherwise('/dashboard');
 });
@@ -34,6 +34,6 @@ app.factory('requestHeaders', function() {
     }
 });
 
-app.run(function($rootScope, AppSettings) {debugger
+app.run(function($rootScope, AppSettings) {
 	$rootScope.pageTitle = AppSettings.appTitle;
 });

@@ -15,6 +15,9 @@ var config = {
 	    cssPaths: [
 	    	'./app/app.css',
 	    ],
+	    viewPaths: [
+	    	'./app/components/*/*.html',
+	    ],
 	    injectOptions: {
 		     addRootSlash: false,
 		     ignorePath: 'app/'
@@ -35,6 +38,8 @@ gulp.task('start', function() {
     // Watch for changes to main files and reload browser.
   	gulp.watch(config.jsPaths).on('change', browserSync.reload);
     gulp.watch(config.cssPaths).on('change', browserSync.reload);
+  	gulp.watch(config.viewPaths).on('change', browserSync.reload);
+    gulp.watch(config.index).on('change', browserSync.reload);
 });
 
 gulp.task('styles', function () {
