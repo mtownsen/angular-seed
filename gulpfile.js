@@ -40,7 +40,9 @@ gulp.task('default', function() {
     });
 
     // Watch for changes to main files and reload browser.
-  	gulp.watch(config.app + config.jsMain).on('change', browserSync.reload);
+    gulp.watch(config.jsPaths).on('change', function(){
+    	gulp.start('scripts');
+    });
     gulp.watch(config.cssPaths).on('change', browserSync.reload);
   	gulp.watch(config.viewPaths).on('change', browserSync.reload);
     gulp.watch(config.index).on('change', browserSync.reload);
