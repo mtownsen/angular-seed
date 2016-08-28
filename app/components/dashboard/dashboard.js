@@ -1,5 +1,3 @@
-'use strict';
-
 angular.module('myApp.dashboard', [ 'ui.router'])
 
 .config(['$stateProvider', function($stateProvider) {

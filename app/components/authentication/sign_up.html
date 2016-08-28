@@ -1,8 +1,10 @@
 <div class="row">
     <div class="col-md-4">
-        <form name="sign_up_form" ng-submit="registerUser(user_username, user_email, user_password, user_password_confirmation)">
+        <form name="sign_up_form" ng-submit="registerUser(first_name, last_name, user_email, user_password, user_password_confirmation)">
             <div class="form-group">
-                <input type="text" class="form-control" placeholder="Username" ng-model="user_username" required>
+                <input type="text" class="form-control" placeholder="First Name" ng-model="first_name" required>
+                <br>
+                <input type="text" class="form-control" placeholder="Last Name" ng-model="last_name" required>
                 <br>
                 <input type="email" class="form-control" placeholder="Email" ng-model="user_email" required>
                 <br>
@@ -10,7 +12,7 @@
                 <br>
                 <input type="password" class="form-control" placeholder="Confirm Password" ng-model="user_password_confirmation" required>
                 <br><br>            
-                <button type="submit">Sign up</button>
+                <button type="submit" class="btn btn-primary">Sign up</button>
             </div>
         </form>
         <br>
