@@ -1,14 +1,15 @@
 # AngularJS + Bootstrap + HTMLBoilerplate + Gulp
-This project is based on the official angular see project configured with gulp for dependency injection with Bootstrap and HTML5Boilerplate for modern styles. 
+This project is based on the official angular seed project configured with gulp for bower dependency injection with Bootstrap-SASS and HTML5Boilerplate for modern styles. 
+ng-annotate to auto annotate compiled js files into a main.js file.  Complete SASS integration with minifications down to app.css file.  
 
 ## Gulp Tasks
 Gulp is integrated to provide useful commands while developing. 
 ```
-gulp start
+gulp
 ```
   *  Uses Browsersync to launch a server and load the app in a browser window
 ```
-gulp styles
+gulp sass
 ```
   *  Inject the necessary stylesheets
 ```
