@@ -6,6 +6,9 @@ var sourcemaps = require('gulp-sourcemaps');
 var browserSync = require('browser-sync').create();
 var ngAnnotate = require('gulp-ng-annotate');
 var concat = require('gulp-concat');
+var uglify = require('gulp-uglify');
+var pump = require('pump');
+
 
 var config = {
 		app: './app/',
@@ -55,12 +58,25 @@ gulp.task('default', function() {
     gulp.watch(config.index).on('change', browserSync.reload);
 });
 
-gulp.task('scripts', function() {
+gulp.task('scripts_old', function() {
 	return gulp.src(config.jsPaths)
 		.pipe(ngAnnotate())
 		.pipe(concat(config.jsMain))
 		.pipe(gulp.dest(config.app));
 });
+
+gulp.task('scripts', function (cb) {
+  pump([
+      gulp.src(config.jsPaths),
+      ngAnnotate(),
+      concat(config.jsMain),
+      uglify(),
+      gulp.dest(config.app)
+    ],
+    cb
+  );
+});
+
 
 gulp.task('sass', function () {
   return gulp.src(config.sassPaths)
