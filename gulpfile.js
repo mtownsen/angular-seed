@@ -2,9 +2,9 @@ var gulp = require('gulp');
 var inject = require('gulp-inject');
 var wiredep = require('wiredep').stream;
 var sass = require('gulp-sass');
+var sourcemaps = require('gulp-sourcemaps');
 var browserSync = require('browser-sync').create();
 var ngAnnotate = require('gulp-ng-annotate');
-
 var concat = require('gulp-concat');
 
 var config = {
@@ -64,7 +64,9 @@ gulp.task('scripts', function() {
 
 gulp.task('sass', function () {
   return gulp.src(config.sassPaths)
+  	.pipe(sourcemaps.init())
     .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
+    .pipe(sourcemaps.write())
     .pipe(gulp.dest(config.app));
 });
 
