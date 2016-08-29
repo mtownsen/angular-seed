@@ -1,7 +1,7 @@
 var gulp = require('gulp');
 var inject = require('gulp-inject');
 var wiredep = require('wiredep').stream;
-var sass = require('gulp-ruby-sass');
+var sass = require('gulp-sass');
 var browserSync = require('browser-sync').create();
 var ngAnnotate = require('gulp-ng-annotate');
 
@@ -16,8 +16,15 @@ var config = {
 			'./app/components/*/*.js',
 			'!./app/components/*/*_test.js',
 	    ],
+	    cssMain: [
+	    	'./app/app.css',
+	    ],
 	    cssPaths: [
 	    	'./app/app.css',
+	    ],
+	    sassPaths: [
+	    	'./app/styles/app.scss',
+	    	'./app/components/*/*.scss'
 	    ],
 	    viewPaths: [
 	    	'./app/components/*/*.html',
@@ -49,15 +56,18 @@ gulp.task('default', function() {
 });
 
 gulp.task('scripts', function() {
-	gulp.src(config.jsPaths)
+	return gulp.src(config.jsPaths)
 		.pipe(ngAnnotate())
 		.pipe(concat(config.jsMain))
 		.pipe(gulp.dest(config.app));
-
-   	return gulp.src(config.index)
-   				.pipe(inject(gulp.src(config.app + config.jsMain, {read: false}), config.injectOptions))
-   				.pipe(gulp.dest(config.app));
 });
+
+gulp.task('sass', function () {
+  return gulp.src(config.sassPaths)
+    .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
+    .pipe(gulp.dest(config.app));
+});
+
 
 gulp.task('styles', function () {
   var target = gulp.src(config.index);

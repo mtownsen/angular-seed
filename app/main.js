@@ -1,6 +1,6 @@
 'use strict';
 
-const AppSettings = {
+var AppSettings = {
   appTitle: 'Example Application',
   apiUrl: 'http://localhost:3000'
 };
@@ -13,12 +13,6 @@ var app = angular.module('myApp', [
 
 app.config(["$locationProvider", "$stateProvider", "$urlRouterProvider", function($locationProvider, $stateProvider, $urlRouterProvider) {
   $locationProvider.hashPrefix('!');
-
-	// if (localStorage.token) {
-	//     console.log("The user is logged in.");
-	// } else {
-	//     $location.path('/login');
-	// }
 
   $urlRouterProvider.otherwise('/dashboard');
 }]);
@@ -36,6 +30,12 @@ app.factory('requestHeaders', function() {
 
 app.run(["$rootScope", "AppSettings", function($rootScope, AppSettings) {
 	$rootScope.pageTitle = AppSettings.appTitle;
+
+  if (localStorage.token) {
+    console.log("The user is logged in.");
+  } else {
+    $location.path('/login');
+  }
 }]);
 
 var authApp = angular.module('myApp.auth', []);
@@ -173,11 +173,12 @@ authApp.config(["$stateProvider", function($stateProvider) {
 angular.module('myApp.dashboard', [ 'ui.router'])
 
 .config(['$stateProvider', function($stateProvider) {
+
 	$stateProvider
 	 .state('dashboard', {
-      url: "/dashboard",
-      templateUrl: "/components/dashboard/dashboard.html",
-      controller: 'DashboardCtrl'
+		url: "/dashboard",
+		templateUrl: "/components/dashboard/dashboard.html",
+		controller: 'DashboardCtrl'
     })
 }])
 
