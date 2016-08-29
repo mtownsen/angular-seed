@@ -58,13 +58,6 @@ gulp.task('default', function() {
     gulp.watch(config.index).on('change', browserSync.reload);
 });
 
-gulp.task('scripts_old', function() {
-	return gulp.src(config.jsPaths)
-		.pipe(ngAnnotate())
-		.pipe(concat(config.jsMain))
-		.pipe(gulp.dest(config.app));
-});
-
 gulp.task('scripts', function (cb) {
   pump([
       gulp.src(config.jsPaths),
@@ -77,27 +70,24 @@ gulp.task('scripts', function (cb) {
   );
 });
 
-
-gulp.task('sass', function () {
-  return gulp.src(config.sassPaths)
-  	.pipe(sourcemaps.init())
-    .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
-    .pipe(sourcemaps.write())
-    .pipe(gulp.dest(config.app));
+gulp.task('sass', function (cb) {
+  pump([
+      gulp.src(config.sassPaths),
+      sourcemaps.init(),
+      sass({outputStyle: 'compressed'}).on('error', sass.logError),
+      sourcemaps.write(),
+      gulp.dest(config.app)
+    ],
+    cb
+  );
 });
 
-
-gulp.task('styles', function () {
-  var target = gulp.src(config.index);
-  // It's not necessary to read the files (will speed up things), we're only after their paths: 
-  var sources = gulp.src(config.cssPaths, {read: false});
-
-  return target.pipe(inject(sources, config.injectOptions))
-    .pipe(gulp.dest(config.app));
-}); 
-
-gulp.task('bower', function () {
-  var target = gulp.src(config.index);
-  return target.pipe(wiredep(config.bowerDir))
-    .pipe(gulp.dest(config.app));
+gulp.task('bower', function (cb) {
+  pump([
+  		gulp.src(config.index),
+      wiredep(config.bowerDir),
+      gulp.dest(config.app)
+    ],
+    cb
+  );
 });
